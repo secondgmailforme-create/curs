@@ -1,0 +1,22 @@
+<!-- Модуль: Заявки от экспертов (Эскалации) -->
+<div class="admin-tickets-module-wrapper">
+    <h1 style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;" data-i18n="aiChatTitle">Заявки от экспертов</h1>
+    <!-- Заголовок и управление -->
+    <div class="module-header">
+        <div class="header-title">
+            <p class="subtitle">Эскалированные обращения, требующие решения администратора</p>
+        </div>
+        <button onclick="loadAdminTickets()" class="btn-refresh-modern" title="Обновить список">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            Обновить
+        </button>
+    </div>
+
+    <!-- Контейнер для заявок -->
+    <div id="admin-tickets-list" class="tickets-grid">
+        <div id="admin-tickets-loading" class="loading-state">
+            <div class="spinner"></div>
+            <span>Загрузка эскалаций...</span>
+        </div>
+    </div>
+</div>

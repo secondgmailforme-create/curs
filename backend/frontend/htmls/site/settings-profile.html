@@ -1,0 +1,41 @@
+<!--модульная страница настройки профиля-->
+
+<!--Заголовок страницы -->
+<header>
+  <h1 style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;" data-i18n="profileSettingsTitle">Настройки профиля</h1>
+</header>
+
+<div class="profile-container">
+  <h1 data-i18n="personalData">Личные данные</h1>
+
+  <div class="avatar-section">
+      <div class="avatar-info">
+          <h3 id="userFullName"></h3>
+          <p><span data-i18n="roleClient"></span> • <span data-i18n="registeredSince">Зарегистрирован с</span> <span id="registerDate"></span></p>
+      </div>
+  </div>
+
+  <form id="profileForm">
+      <div class="form-grid">
+          <div class="form-group full-width">
+              <label data-i18n="fullNameLabel">ФИО</label>
+              <input type="text" id="fullNameInput"  data-i18n-placeholder="fullNamePlaceholder" placeholder="Введите ваше имя">
+          </div>
+
+          <div class="form-group">
+              <label data-i18n="emailLabel">Email адрес</label>
+              <input type="email" id="emailInput" readonly title="Для смены email обратитесь в поддержку">
+          </div>
+
+          <div class="form-group">
+              <label data-i18n="phoneLabel">Телефон</label>
+              <input type="tel" id="phoneInput"  data-i18n-placeholder="phonePlaceholder" placeholder="+7 (___) ___-__-__">
+          </div>
+
+        </div>
+      <div class="actions">
+          <button type="button" id="logoutBtn" class="btn-danger" onclick="logout()" style="cursor: pointer;" data-i18n="logoutBtn">Выйти из профиля</button>
+          <button type="submit" class="btn-save" data-i18n="saveChangesBtn">Сохранить изменения</button>
+      </div>
+  </form>
+</div>

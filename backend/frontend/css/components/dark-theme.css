@@ -1,0 +1,207 @@
+ /* Dark theme for dashboard */
+body.dark-theme {
+    background: #0f0518;
+}
+
+body.dark-theme .sidebar {
+    background: rgba(30, 20, 40, 0.902);
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .logo {
+    color: #ba68c8;
+}
+
+body.dark-theme .nav-links a {
+    color: #b0b0b0;
+}
+
+body.dark-theme .nav-links a:hover,
+body.dark-theme .nav-links a.active {
+    background: rgba(138, 43, 226, 0.25);
+    color: #d48aff;
+}
+
+body.dark-theme .user-profile {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .user-profile:hover {
+    background-color: rgba(138, 43, 226, 0.25);
+}
+
+body.dark-theme h1 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .card {
+    background: rgba(40, 25, 55, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .card:hover {
+    background: rgba(50, 30, 70, 0.8);
+}
+
+body.dark-theme .card h3 {
+    color: #b0b0b0;
+}
+
+body.dark-theme .card .value {
+    color: #e0e0e0;
+}
+
+body.dark-theme .recent-tickets {
+    background: rgba(40, 25, 55, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .section-title {
+    color: #e0e0e0;
+}
+
+body.dark-theme th {
+    color: #b0b0b0;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme td {
+    color: #e0e0e0;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme tr:last-child td {
+    border-bottom-color: transparent;
+}
+
+body.dark-theme .status.new { background: rgba(25, 118, 210, 0.2); color: #64b5f6; }
+body.dark-theme .status.progress { background: rgba(245, 124, 0, 0.2); color: #ffb74d; }
+body.dark-theme .status.done { background: rgba(46, 125, 50, 0.2); color: #81c784; }
+body.dark-theme .status.waiting { background: rgba(123, 31, 162, 0.2); color: #ba68c8; }
+
+body.dark-theme .more-link {
+    background-color: #4a148c;
+    border-color: #6a1b9a;
+    color: #e0e0e0;
+}
+
+body.dark-theme .tabletickgop:hover {
+    background-color: #2a1a3a;
+}
+
+body.dark-theme .avatarlink:visited {
+    color: #e0e0e0;
+}
+
+/* Темная тема */
+.dark-theme #globalLanguageSelect {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+
+/* ==================== ТЕМНАЯ ТЕМА ==================== */
+/* Основной фон: #0f0518 (тёмно-фиолетовый) */
+
+body.dark-theme {
+    background-color: #0f0518;
+    color: #e0d0f0;
+}
+
+body.dark-theme .settings-container {
+    background: #1a0b2e;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+body.dark-theme .settings-tabs {
+    border-bottom-color: #2d1b4e;
+}
+
+body.dark-theme .tab-link {
+    color: #c9a7ff;
+}
+
+body.dark-theme .tab-link:hover,
+body.dark-theme .tab-link.active {
+    color: #d8b4fe;
+}
+
+body.dark-theme .form-group label,
+body.dark-theme .theme-text-label,
+body.dark-theme .theme-text-primary,
+body.dark-theme .theme-text-secondary {
+    color: #d8b4fe;
+}
+
+body.dark-theme .form-group input {
+    background: #2d1b4e;
+    border-color: #4c2a85;
+    color: #e0d0f0;
+}
+
+body.dark-theme .form-group input:focus {
+    border-color: #8a2be2;
+    background: #3d235e;
+}
+
+body.dark-theme .form-group input::placeholder {
+    color: #8b7a9e;
+}
+
+body.dark-theme hr {
+    border-top-color: #2d1b4e;
+}
+
+body.dark-theme .message-box {
+    color: #e0d0f0;
+}
+
+/* Темная тема для switch */
+body.dark-theme .slider {
+    background-color: #4c2a85;
+}
+
+body.dark-theme input:checked + .slider {
+    background-color: #a855f7;
+}
+
+body.dark-theme .btn-secondary {
+    color: #c9a7ff;
+    border-color: #c9a7ff;
+}
+
+body.dark-theme .btn-secondary:hover {
+    background: #8a2be2;
+    color: white;
+}
+
+body.dark-theme .close-modal {
+    color: #aaa;
+}
+
+body.dark-theme .close-modal:hover {
+    color: #fff;
+}
+
+body.dark-theme .theme-text-description {
+    color: #a89bb8;
+}
+
+body.dark-theme .chatai {
+    background: rgba(30, 20, 50, 0.7);
+}
+
+body.dark-theme .textchat {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .questionsai  {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .questionsai::placeholder{
+    color: rgba(255, 255, 255, 0.5);
+}
+body.dark-theme .bot-info strong {
+    color: white;
+}

@@ -1,0 +1,47 @@
+<!-- Основной чат админа -->
+<div class="admin-chat-interface">
+    <header class="admin-chat-header">
+        <div class="admin-chat-title">
+             <h1 style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;">Чат с клиентом</h1>
+            <span class="admin-chat-status" id="adminChatStatus">Выберите заявку для начала работы</span>
+        </div>
+        <button class="admin-btn admin-btn-secondary" id="openTicketSwitcherBtn" style="padding: 8px; border-radius: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </button>
+    </header>
+
+    <div class="admin-messages-area" id="adminChatMessages">
+        <div class="admin-empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <p style="margin-top: 15px;">Нет активного диалога</p>
+        </div>
+    </div>
+
+    <div class="admin-input-zone">
+        <div class="admin-textarea-wrapper">
+            <textarea id="adminMessageInput" placeholder="Напишите сообщение..." rows="2" disabled></textarea>
+        </div>
+        <div class="admin-actions">
+            <button id="adminAiResponseBtn" class="admin-btn admin-btn-ai" disabled>🤖 Ответ AI</button>
+            <button id="adminCompleteBtn" class="admin-btn admin-btn-complete" disabled>✅ Завершить</button>
+            <button id="adminSendBtn" class="admin-btn admin-btn-send" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно выбора заявки -->
+<div id="ticketSwitcherModal" class="admin-modal-overlay" style="display: none;">
+    <div class="admin-modal-content">
+        <div class="admin-modal-header">
+            <h2>Выберите заявку</h2>
+            <button class="admin-modal-close" id="closeTicketSwitcherBtn">&times;</button>
+        </div>
+        <div class="admin-modal-body">
+            <div id="ticketSwitcherList" class="admin-tickets-list">
+                <div class="loading-state">Загрузка заявок...</div>
+            </div>
+        </div>
+    </div>
+</div>

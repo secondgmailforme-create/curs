@@ -1,0 +1,44 @@
+<!--модульная страница статистики клиента-->
+    <canvas id="Canvas"></canvas>
+    <header>
+      <h1 style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;" data-i18n="dashboardTitle">Обзор активности</h1>
+      <a class="btn-new" href="/CHAT" data-page="chatai" data-i18n="newTicketBtn">+Новая заявка</a>
+    </header>
+    <div class="stats-grid">
+      <div class="card">
+          <h3 data-i18n="totalTickets">Всего заявок</h3>
+          <div class="value" id="counttickets"></div>
+          <div class="trend negative" id="mintime"></div>
+      </div>
+      <div class="card">
+          <h3 data-i18n="inProgress">В работе</h3>
+          <div class="value" id="worktickets"></div>
+          <div class="trend negative" id="wartick"></div>
+      </div>
+      <div class="card">
+          <h3 data-i18n="resolved">Решено</h3>
+          <div class="value" id="successtic"></div>
+          <div class="trend" id="process"></div>
+      </div>
+        <div class="card">
+            <h3 data-i18n="avgTime">Среднее время</h3>
+            <div class="value" id="timetickets"></div>
+            <div class="trend" id="aitickets"></div>
+        </div>
+    </div>
+    <div class="recent-tickets">
+      <h2 class="section-title" data-i18n="recentTickets">Последние обращения</h2>
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="idColumn">ID</th>
+            <th data-i18n="titleColumn">Название</th>
+            <th data-i18n="descriptionColumn">Описание</th>
+            <th data-i18n="dateColumn">Дата</th>
+            <th data-i18n="categoryColumn">Категория</th>
+            <th data-i18n="statusColumn">Статус</th>
+          </tr>
+        </thead>
+        <tbody id="tabletick"></tbody>
+      </table>
+    </div>

@@ -1,0 +1,82 @@
+<!--модульная страница настройки сайта-->
+
+    <!--Заголовок страницы -->
+    <header>
+        <h1 style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;" data-i18n="settingsTitle">Настройки сайта</h1>
+    </header>
+
+    <div class="settings-container">
+        <!-- Вкладки навигации -->
+        <div class="settings-tabs">
+            <a class="tab-link active" onclick="openTab(event, 'general')" data-i18n="tabGeneral">Общие</a>
+            <a class="tab-link" onclick="openTab(event, 'security')" data-i18n="tabSecurity">Безопасность</a>
+        </div>
+
+        <!-- Вкладка: Общие настройки -->
+        <div id="general" class="tab-content active">
+            <h2 style="color:#4a148c; margin-bottom: 20px;" class="theme-text-primary" data-i18n="generalSettings">Общие настройки</h2>
+
+            <div class="form-group">
+                <label class="theme-text-label" data-i18n="themeLabel">Тема оформления</label>
+                <div class="theme-switch-container">
+                    <span class="theme-text-label" data-i18n="lightTheme">Светлая</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="theme-text-label" data-i18n="darkTheme">Тёмная</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладка: Безопасность -->
+        <div id="security" class="tab-content">
+            <h2 style="color:#4a148c; margin-bottom: 20px;" class="theme-text-primary" data-i18n="securitySettings">Безопасность</h2>
+
+            <!-- Форма смены пароля -->
+            <div class="form-section">
+                <h3 class="theme-text-secondary" data-i18n="changePasswordTitle">Смена пароля</h3>
+                <div class="form-group">
+                    <label class="theme-text-label" data-i18n="oldPasswordLabel">Старый пароль</label>
+                    <input type="password" id="oldPassword" data-i18n-placeholder="oldPasswordPlaceholder" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label class="theme-text-label" data-i18n="newPasswordLabel">Новый пароль</label>
+                    <input type="password" id="newPassword" data-i18n-placeholder="newPasswordPlaceholder" placeholder="Придумайте новый пароль">
+                </div>
+                <div class="form-group">
+                    <label class="theme-text-label" data-i18n="confirmPasswordLabel">Повторите новый пароль</label>
+                    <input type="password" id="confirmPassword" data-i18n-placeholder="confirmPasswordPlaceholder" placeholder="Повторите пароль">
+                </div>
+                <button class="btn-save" onclick="changePassword()" data-i18n="savePasswordBtn">Сохранить пароль</button>
+                <div id="passwordMessage" class="message-box"></div>
+            </div>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+            <!-- Удаление аккаунта -->
+            <div class="form-section">
+                <h3 class="theme-text-secondary" style="color: #d32f2f;" data-i18n="dangerZone">Опасная зона</h3>
+                <button class="btn-danger" onclick="showDeleteAccountModal()" data-i18n="deleteAccountBtn">Удалить аккаунт</button>
+            </div>
+        </div>
+
+    <!-- Модальное окно для удаления аккаунта -->
+    <div id="deleteAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDeleteAccountModal()">&times;</span>
+            <h2 class="theme-text-primary" data-i18n="confirmDeleteTitle">Подтверждение удаления</h2>
+            <p class="theme-text-description" data-i18n="confirmDeleteText">Вы уверены? Это действие необратимо!</p>
+            <div class="form-group">
+                <label class="theme-text-label" data-i18n="passwordForDeleteLabel">Введите пароль для подтверждения</label>
+                <input type="password" id="deletePasswordInput" data-i18n-placeholder="passwordPlaceholder" placeholder="Ваш пароль">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeDeleteAccountModal()" data-i18n="cancelBtn">Отмена</button>
+                <button class="btn-danger" onclick="deleteAccount()" data-i18n="confirmDeleteBtn">Удалить</button>
+            </div>
+            <div id="deleteMessage" class="message-box"></div>
+        </div>
+    </div>
+
+   

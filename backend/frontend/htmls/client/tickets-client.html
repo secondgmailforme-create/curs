@@ -1,0 +1,57 @@
+<!--модульная страница списка заявок-->
+<header>
+  <h1 style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;" data-i18n="ticketsHistoryTitle">История заявок</h1>
+</header>
+<div class="recent-tickets">
+  <table>
+    <thead>
+      <tr>
+        <th data-i18n="idColumn">ID</th>
+        <th data-i18n="titleColumn">Название</th>
+        <th data-i18n="descriptionColumn">Описание</th>
+        <th>
+          <div class="date-input-wrapper" id="dateWrapper">
+              <input type="text" id="range-picker" data-i18n-placeholder="datePlaceholder" placeholder="дата">
+              <div class="arrowB"></div>
+          </div>
+        </th>
+        <th>
+          <div class="custom-select" id="subjectSelect">
+            <div class="select-header">
+                <span class="selected-text" data-i18n="categoryDefault">Категория</span>
+                <div class="arrow"></div>
+            </div>
+            <div class="select-options">
+                <div class="option" data-value="all" data-i18n="allCategories">Все</div>
+                <div class="option" data-value="1" data-i18n="categoryPayment">Оплата</div>
+                <div class="option" data-value="2" data-i18n="categoryDelivery">Доставка</div>
+                <div class="option" data-value="3" data-i18n="categoryTech">Техподдержка</div>
+                <div class="option" data-value="4" data-i18n="categoryConsult">Консультация</div>
+                <div class="option" data-value="5" data-i18n="categoryReturn">Возврат</div>
+            </div>
+        </div>
+        </th>
+        <th>
+          <div class="custom-select" id="statusSelect">
+            <div class="select-header">
+                <span class="selected-text" data-i18n="statusDefault">Статус</span>
+                <div class="arrow"></div>
+            </div>
+            <div class="select-options">
+                <div class="option" data-value="all" data-i18n="allStatus">Все</div>
+                <div class="option" data-value="1" data-i18n="statusNew">Новая</div>
+                <div class="option" data-value="2" data-i18n="statusInProgressOp">В работе (оператор)</div>
+                <div class="option" data-value="4" data-i18n="statusWaitExpert">Ожидает эксперта</div>
+                <div class="option" data-value="5" data-i18n="statusInProgressExp">В работе (эксперт)</div>
+                <div class="option" data-value="7" data-i18n="statusResolved">Решена</div>
+                <div class="option" data-value="8" data-i18n="statusCanceled">Отменена</div>
+                <div class="option" data-value="3" data-i18n="statusWaitOperator">Ожидание оператора</div>
+                <div class="option" data-value="6" data-i18n="statusEscalated">Передана администратору</div>
+            </div>
+        </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="tabletick"></tbody>
+  </table>
+</div>

@@ -1,0 +1,124 @@
+<!-- Пользователи -->
+<div class="admin-users-page">
+    <div class="users-header">
+        <h2>Управление пользователями</h2>
+        <button class="btn btn-primary" id="createUserBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+                <line x1="12" y1="11" x2="12" y2="15"/>
+                <line x1="10" y1="13" x2="14" y2="13"/>
+            </svg>
+            Создать пользователя
+        </button>
+    </div>
+
+    <!-- Фильтры и поиск -->
+    <div class="users-filters">
+        <div class="search-box">
+            <input type="text" id="searchUsers" placeholder="Поиск по имени, email или телефону...">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+        </div>
+        <div class="role-filter">
+            <select id="filterRole">
+                <option value="all">Все роли</option>
+                <option value="4">Администратор</option>
+                <option value="2">Оператор</option>
+                <option value="3">Эксперт</option>
+                <option value="1">Пользователь</option>
+            </select>
+        </div>
+        <div class="status-filter">
+            <select id="filterStatus">
+                <option value="all">Все статусы</option>
+                <option value="active">Активные</option>
+                <option value="banned">Заблокированные</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Таблица пользователей -->
+    <div class="users-table-container">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ФИО</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Роль</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <tr>
+                    <td colspan="7" class="loading-row">Загрузка пользователей...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Пагинация -->
+    <div class="users-pagination" id="usersPagination"></div>
+</div>
+
+<!-- Модальное окно создания/редактирования пользователя -->
+<div id="userModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Создание пользователя</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <form id="userForm">
+            <div class="form-group">
+                <label>ФИО *</label>
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>Телефон</label>
+                <input type="tel" id="phone">
+            </div>
+            <div class="form-group">
+                <label>Роль *</label>
+                <select id="roleId" required>
+                    <option value="4">Администратор</option>
+                    <option value="2">Оператор</option>
+                    <option value="3">Эксперт</option>
+                    <option value="1">Пользователь</option>
+                </select>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" class="btn btn-secondary modal-cancel">Отмена</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Модальное окно подтверждения -->
+<div id="confirmModal" class="modal" style="display: none;">
+    <div class="modal-content confirm-modal">
+        <div class="modal-header">
+            <h3>Подтверждение действия</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="confirm-body">
+            <p id="confirmMessage">Вы уверены?</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-secondary confirm-cancel">Отмена</button>
+            <button class="btn btn-danger confirm-action">Подтвердить</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast уведомления -->
+<div id="toastContainer" class="toast-container"></div>

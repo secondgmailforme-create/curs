@@ -1,0 +1,33 @@
+:root {
+    --primary: #8a2be2;
+    --primary-dark: #6a1b9a;
+    --primary-light: #8b5cf6;
+    --secondary: #ec4899;
+    --text-dark: #2e1a36;
+    --text-light:#665c70;
+    --bg-gradient-start: #0f0518;
+    --bg-gradient-end: #1a0b2e;
+    --glass-bg: rgb(245, 238, 238);
+    --glass-border:  rgba(255, 255, 255, 0.4);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+body {
+    background:linear-gradient(135deg, #4b0082 0%, #2e0052 100%); /* #0f0518*/
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    color: var(--text-dark);
+    position: relative;
+ }

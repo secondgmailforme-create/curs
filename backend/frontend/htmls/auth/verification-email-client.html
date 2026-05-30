@@ -1,0 +1,44 @@
+ <!--html для верификации кода от email-->
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Поддержка call center</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/pages/auth.css"> <!-- базовый стиль для сайта-->
+        <link rel="stylesheet" href="/css/pages/verify-email.css"> <!--стили для ввода пароля-->
+        <canvas id="dataCanvas"></canvas>
+        <script src="/scripts-js/auth/canvas.js"></script>  <!--импортируем задний фон-->
+        <script src="/scripts-js/auth/auth.js"></script>  <!--импортируем js скрипт, логика -->
+    </head>
+    <body>
+        <div class="authform">
+            <header><h1 style="margin: 20px;">Введите проверочный код</h1></header>
+            <article>
+                <form id="verificationForm">
+                    <div class="code-inputs">
+                        <input type="text" maxlength="1" class="code-digit" id="digit1" required>
+                        <input type="text" maxlength="1" class="code-digit" id="digit2" required>
+                        <input type="text" maxlength="1" class="code-digit" id="digit3" required>
+                        <input type="text" maxlength="1" class="code-digit" id="digit4" required>
+                        <input type="text" maxlength="1" class="code-digit" id="digit5" required>
+                        <input type="text" maxlength="1" class="code-digit" id="digit6" required>
+                    </div>
+                    
+                    <div id="verificationIndicator" class="verification-indicator" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Проверка кода...</p>
+                    </div>
+                    <div class="resend-container">
+                        Нет письма? 
+                        <a id="resend-link" onclick="resendVerificationCode()">Отправить код повторно</a>
+                    </div>
+                    
+                    <div class="separator1"><a href="/htmls/auth/login-client.html">Назад ко входу</a></div>
+                </form>
+            </article>
+        </div>
+        <footer class="under">
+            <p>©Все права защищены 2026г.</p>
+        </footer>
+    </body>
+</html>

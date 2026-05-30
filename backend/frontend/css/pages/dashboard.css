@@ -1,0 +1,537 @@
+/* ==========================================
+   ОСНОВНЫЕ СТИЛИ
+   ========================================== */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Scrollbar */
+.main-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.btn-new {
+    background: var(--primary);
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+    transition: 0.3s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.btn-new:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(0);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.card h3 {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card .value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.card .trend {
+    font-size: 15px;
+    margin-top: 5px;
+    color: #2e6645;
+}
+
+.card .trend.negative {
+    color: #8a0d24;
+    font-size: 15px;
+}
+
+canvas {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.more-link {
+    text-decoration: none;
+    background-color: rgb(247, 241, 241);
+    border-radius: 4px;
+    border: 1px solid #d1c4e9;
+    font-size: 15px;
+    color: black;
+    padding: 6px 12px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.more-link:hover {
+    border-color: #8a2be2;
+}
+
+/* ==========================================
+   ЗАГРУЗОЧНЫЙ ЭКРАН
+   ========================================== */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-video {
+    width: 500px;
+    max-width: 90%;
+    border-radius: 20px;
+    height: auto;
+    display: block;
+}
+
+/* Анимация исчезновения */
+.loading-screen.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.loading-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    text-align: center;
+}
+
+.pulse-logo {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; visibility: visible; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.7; transform: scale(0.95); }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (768px - 1024px)
+   ========================================== */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .btn-new {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .stats-grid {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .card .value {
+        font-size: 28px;
+    }
+    
+    .pulse-logo {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 25px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    .btn-new {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        white-space: normal;
+    }
+    
+    .stats-grid {
+        gap: 15px;
+        grid-template-columns: 1fr;
+        margin-bottom: 30px;
+    }
+    
+    .card {
+        padding: 18px;
+    }
+    
+    .card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .card h3 {
+        font-size: 13px;
+    }
+    
+    .card .value {
+        font-size: 26px;
+    }
+    
+    .card .trend,
+    .card .trend.negative {
+        font-size: 13px;
+    }
+    
+    .more-link {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+    
+    /* Загрузочный экран */
+    .loading-video {
+        width: 80%;
+    }
+    
+    .pulse-logo {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .loading-logo {
+        height: 150px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (до 480px)
+   ========================================== */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .btn-new {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .stats-grid {
+        gap: 12px;
+    }
+    
+    .card {
+        padding: 15px;
+        border-radius: 16px;
+    }
+    
+    .card .value {
+        font-size: 24px;
+    }
+    
+    .card h3 {
+        font-size: 12px;
+    }
+    
+    .card .trend,
+    .card .trend.negative {
+        font-size: 12px;
+    }
+    
+    .pulse-logo {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ В АЛЬБОМНОЙ ОРИЕНТАЦИИ
+   ========================================== */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+    
+    .card {
+        padding: 18px;
+    }
+    
+    .card .value {
+        font-size: 24px;
+    }
+}
+
+/* ==========================================
+   УЛУЧШЕНИЯ ДЛЯ ТАЧ-УСТРОЙСТВ
+   ========================================== */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover {
+        transform: none;
+        background: var(--glass-bg);
+    }
+    
+    .card:active {
+        transform: scale(0.98);
+        background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .btn-new:hover {
+        transform: none;
+    }
+    
+    .btn-new:active {
+        transform: scale(0.97);
+    }
+}
+
+
+/* ==========================================
+   ТАБЛИЦЫ И ДРУГИЕ ЭЛЕМЕНТЫ ВНУТРИ MAIN-CONTENT
+   ========================================== */
+@media (max-width: 768px) {
+    .recent-tickets,
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        min-width: 500px;
+    }
+    
+    th, td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   АНИМАЦИЯ ДЛЯ КАРТОЧЕК ПРИ ЗАГРУЗКЕ
+   ========================================== */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: cardFadeIn 0.4s ease-out forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.2s; }
+
+/* ==========================================
+   УЛУЧШЕНИЕ ПРОКРУТКИ НА МОБИЛЬНЫХ
+   ========================================== */
+@media (max-width: 768px) {
+    .main-content {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ==========================================
+   ПРЕДОТВРАЩЕНИЕ ЗУМА НА IOS
+   ========================================== */
+@media (max-width: 768px) {
+    input, 
+    select, 
+    textarea, 
+    button,
+    .btn-new,
+    .more-link {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   ДАШБОРД - СПЕЦИАЛЬНЫЕ АДАПТАЦИИ
+   ========================================== */
+@media (max-width: 480px) {
+    /* Убираем анимацию hover на карточках */
+    .stats-grid {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Центрируем кнопку "Все заявки" */
+    .more-row td {
+        text-align: center;
+    }
+    
+    /* Адаптивные статусы */
+    .status {
+        font-size: 10px;
+        padding: 3px 8px;
+        white-space: nowrap;
+    }
+}
+
+/* ==========================================
+   ВЫСОКИЕ ЭКРАНЫ (больше 1200px)
+   ========================================== */
+@media (min-width: 1200px) {
+    .main-content {
+        padding: 50px;
+    }
+    
+    .stats-grid {
+        gap: 30px;
+    }
+    
+    .card {
+        padding: 30px;
+    }
+    
+    .card .value {
+        font-size: 36px;
+    }
+}
+
+/* ==========================================
+   СКРЫТИЕ ЭЛЕМЕНТОВ НА МОБИЛЬНЫХ
+   ========================================== */
+.hide-on-mobile {
+    display: inline;
+}
+
+.show-on-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+    
+    .show-on-mobile {
+        display: inline;
+    }
+}
+
+/* ==========================================
+   ПОДДЕРЖКА REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .btn-new,
+    .pulse-logo {
+        animation: none;
+        transition: none;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .btn-new:hover {
+        transform: none;
+    }
+}

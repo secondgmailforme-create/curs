@@ -1,0 +1,124 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: curs5-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-helpdesk}
+      POSTGRES_USER: ${DB_USER:-helpdesk}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-helpdesk_secret}
+    ports:
+      - "${DB_PORT_HOST:-5432}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      # Авто-инициализация схемы при первом запуске пустого тома
+      - ./backend/base_data/shema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-curs5} -d ${DB_NAME:-curs5}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: curs5-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT_HOST:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Mailpit — фейковый SMTP-сервер для локальной разработки.
+  # SMTP принимает на 1025, веб-интерфейс с письмами на http://localhost:8025
+  # Используется только если в .env не заданы реальные SMTP_* переменные.
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: curs5-mailpit
+    restart: unless-stopped
+    ports:
+      - "${MAILPIT_SMTP_PORT_HOST:-1025}:1025"
+      - "${MAILPIT_UI_PORT_HOST:-8025}:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: curs5-backend
+    restart: unless-stopped
+    # Позволяет обращаться из контейнера к сервисам хоста как host.docker.internal
+    # (нужно для AI_API_URL / CLASSIFIER_URL, крутящихся на машине разработчика).
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: ${PORT:-3001}
+
+      # PostgreSQL (хост/порт фиксированы под docker network)
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-helpdesk}
+      DB_USER: ${DB_USER:-helpdesk}
+      DB_PASSWORD: ${DB_PASSWORD:-helpdesk_secret}
+
+      # Redis (URL фиксирован под docker network)
+      REDIS_URL: redis://redis:6379
+
+      # Сессии / JWT
+      SESSION_SECRET: ${SESSION_SECRET:-change_me_session}
+      JWT_SECRET: ${JWT_SECRET:-change_me_jwt}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+
+      # Frontend URL (используется в redirect-ах и CORS)
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3001}
+
+      # OAuth (необязательно)
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-}
+
+      YANDEX_CLIENT_ID: ${YANDEX_CLIENT_ID:-}
+      YANDEX_CLIENT_SECRET: ${YANDEX_CLIENT_SECRET:-}
+      YANDEX_CALLBACK_URL: ${YANDEX_CALLBACK_URL:-}
+
+      VK_CLIENT_ID: ${VK_CLIENT_ID:-}
+      VK_CLIENT_SECRET: ${VK_CLIENT_SECRET:-}
+      VK_CALLBACK_URL: ${VK_CALLBACK_URL:-}
+
+      # SMTP. По умолчанию — локальный Mailpit (http://localhost:8025).
+      # Если в .env заданы реальные SMTP_* — будут использоваться они.
+      SMTP_HOST: ${SMTP_HOST:-mailpit}
+      SMTP_PORT: ${SMTP_PORT:-1025}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-no-reply@curs5.local}
+      EMAIL_USER: ${EMAIL_USER:-no-reply@curs5.local}
+
+      # AI / классификатор (на хосте разработчика)
+      AI_API_URL: ${AI_API_URL:-}
+      AI_MODEL_NAME: ${AI_MODEL_NAME:-}
+      CLASSIFIER_URL: ${CLASSIFIER_URL:-}
+    ports:
+      - "${BACKEND_PORT_HOST:-3001}:3001"
+    volumes:
+      - app_logs:/app/logs
+
+volumes:
+  pg_data:
+  redis_data:
+  app_logs:

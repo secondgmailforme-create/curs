@@ -1,0 +1,43 @@
+<!-- Модуль: Мои заявки -->
+<div class="tickets-module-wrapper">
+    
+    <!-- Заголовок и управление -->
+    <div class="module-header">
+        <div class="header-title">
+            <h1>Мои заявки</h1>
+            <p class="subtitle">Управление обращениями клиентов</p>
+        </div>
+        <button class="btn-refresh-modern" title="Обновить список">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 4v6h-6"></path>
+                <path d="M1 20v-6h6"></path>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            Обновить
+        </button>
+    </div>
+
+    <!-- Вкладки -->
+    <div class="tabs-wrapper">
+        <button class="tab-btn-modern active" data-tab="new">
+            Новые 
+            <span id="new-count" class="tab-badge-modern">0</span>
+        </button>
+        <button class="tab-btn-modern" data-tab="inprogress">
+            В работе
+            <span id="inprogress-count" class="tab-badge-modern">0</span>
+        </button>
+        <button class="tab-btn-modern" data-tab="completed">
+            Завершенные 
+            <span id="completed-count" class="tab-badge-modern">0</span>
+        </button>
+    </div>
+
+    <!-- Контейнер для заявок -->
+    <div id="tickets-container" class="tickets-grid">
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <span>Загрузка данных...</span>
+        </div>
+    </div>
+</div>

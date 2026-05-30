@@ -1,0 +1,31 @@
+<!--html страница для регистрации аккаунта-->
+<!DOCTYPE html>
+<htmnl lang = "ru">
+    <head>
+        <title>Поддержка call center</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/pages/auth.css">
+        <canvas id ="dataCanvas"></canvas>
+        <script src="/scripts-js/auth/canvas.js"></script>
+        <script src="/scripts-js/auth/auth.js"></script>
+    </head>
+    <body>
+        <div class="authform">
+            <header><h1 style ="margin: 20px;">Регистрация аккаунта</h1></header>
+            <article>
+                <form onsubmit="registerClient(event);return false;">
+                    <input required placeholder="Введите ФИО,через пробел" id = "registerfullnameUser"></input>
+                    <input required placeholder="Введите номер" id = "registerphoneUser"></input>
+                    <input required placeholder="Введите email" id = "registeremailUser"></input>
+                    <input required placeholder="Введите пароль" id = "registerpasswordUser"></input>
+                    <button type = "submit" name = "auth">Зарегистрироваться</button>
+                </form>
+            </article>
+            <div class="separator1"><a href="/htmls/auth/login-client.html">Уже есть аккаунт?[войти]</a></div>
+        
+        </div>
+        <footer class="under">
+            <p>©Все права защищены 2026г.</p>
+        </footer>
+    </body>
+</html>

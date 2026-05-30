@@ -1,0 +1,96 @@
+<!-- РОДИТЕЛЬСКАЯ html страница для всех модулей -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>SupportAI - Личный кабинет</title>
+    <link rel="icon" type="image/png" href="/files/logo-site.png">
+    <canvas id="Canvas"></canvas>
+    <!-- Подключение всех стили сайта -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/components/dark-theme.css">
+    <link rel="stylesheet" href="/css/components/keyframes.css">
+    <link rel="stylesheet" href="/css/components/calendare.css">
+    <link rel="stylesheet" href="/css/pages/sidebar.css">
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+    <link rel="stylesheet" href="/css/tickets/client-tickets.css">
+    <link rel="stylesheet" href="/css/tickets/operator-tickets.css">
+    <link rel="stylesheet" href="/css/tickets/expert-my-tickets.css">
+    <link rel="stylesheet" href="/css/aichat/universal-chat.css">
+     <link rel="stylesheet" href="/css/admin/admin-main-module.css">
+    <link rel="stylesheet" href="/css/pages/settings.css">
+    <link rel="stylesheet" href="/css/pages/settings-profile.css">
+    <style>
+        body { visibility: hidden; }
+        body.loaded { visibility: visible; }
+    </style>
+</head>
+<body>
+
+    <!-- САЙДБАР -->
+    <aside class="sidebar">
+        <div >
+             <img  class="logo-img logo-light" src="/files/logo-light.png">
+             <img class="logo-img logo-dark" src="/files/logo-dark.png" style="display: none;">
+        </div>
+        <ul class="nav-links">
+        </ul>
+          <!-- Глобальный переключатель языка -->
+
+        <div class="language-selector">
+            <select id="globalLanguageSelect">
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="en">en English</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+        </div>
+        <a href="/PROFILE-SETTINGS" class="avatarlink">
+            <div class="user-profile">
+                <div class="avatar" id="userAvatar">ИИ</div>
+                <div>
+                    <div style="font-weight: 600;" id="userInfo">Загрузка...</div>
+                    <div style="font-size: 12px;" id="userRole">Роль</div>
+                </div>
+            </div>
+        </a>
+    </aside>
+
+    <!-- КОНТЕНТ -->
+    <main class="main-content">
+        <div id="app">
+            <div class="loader">Загрузка...</div>
+        </div>
+    </main>
+
+    <!-- ВСЕ СКРИПТЫ ПРИЛОЖЕНИЯ -->
+    <script src="/scripts-js/site/socket.io.js"></script>
+    <script src="/scripts-js/site/dashboard-canvas.js"></script>
+    <script src="/scripts-js/client/dasboard-client.js"></script>
+    <script src="/scripts-js/operator/dashboard-operator.js"></script>
+    <script src="/scripts-js/expert/dashboard-expert.js"></script>
+    <script src="/scripts-js/expert/expert-chat.js"></script>
+    <script src="/scripts-js/client/alltickets-client.js"></script>
+    <script src="/scripts-js/calendare/calendare-libriry.js"></script>
+    <script src="/scripts-js/expert/expert-my-tickets.js"></script>
+    <script src="/scripts-js/admin/dashboard-admin.js"></script>
+    <script src="/scripts-js/admin/admin-users.js"></script>
+    <script src="/scripts-js/admin/admin-tickets.js"></script>
+    <script src="/scripts-js/admin/admin-chat.js"></script>
+    <script src="/scripts-js/admin/admin-ai.js"></script>
+    <script src="/scripts-js/admin/admin-logs.js"></script>
+    <script src="/scripts-js/calendare/russian-local.js"></script>
+    <script src="/scripts-js/site/settings-full.js"></script>
+    <script src="/scripts-js/client/chatai-allroles.js"></script>
+    <script src="/scripts-js/site/profiles.js"></script>
+    <script src="/scripts-js/site/translator.js"></script>
+    <script src="/scripts-js/site/universal-routers.js"></script>
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody">Загрузка...</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!--страница для входа сотрудников -->
+<!DOCTYPE html>
+<html lang = "ru">
+    <head>
+        <title>Поддержка call center</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/pages/auth.css">
+        <canvas id ="dataCanvas"></canvas>
+        <script src="/scripts-js/auth/canvas.js"></script>
+        <script src="/scripts-js/auth/auth.js"></script>
+    </head>
+    <body>
+        <div class="authform">
+            <header>
+                <h1>Вход для персонала🔒</h1>
+            </header>
+            <article>
+                <form onsubmit="authpersonal(event);return false;">
+                    <input required placeholder="Введите email" id = "emailpersonal"></input>
+                    <input required placeholder="Введите пароль" id = "passwordpersonal"></input>
+                    <button type = "submit" name = "auth" >Войти</button>
+                </form>
+            </article>
+            <div class="separator2">
+                <a href="/htmls/auth/login-client.html">← На главную</a>
+            </div>
+        </div>
+        <footer class="under">
+            <p>©Все права защищены 2026г.</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,460 @@
+*{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+body {
+    background-color:blueviolet/* #0f0518 */
+}
+/*СТИЛЬ ДЛЯ ОКОШКА ВХОДА*/
+.authform{
+    position: relative;
+    z-index: 1;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 248, 240, 0.75);
+    backdrop-filter: blur(10px); /* Размытие фона под формой */
+    border-radius: 20px;
+    padding: 40px;
+    margin-left: 37%;
+    margin-top: 7%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/*СТИЛЬ ДЛЯ ВНУТРЕННИХ ЭЛЕМЕНТОВ ФОРМЫ ВХОДА*/
+.authform input{
+  background-color:rgba(255, 255, 255, 0.6);
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+}
+.authform input:focus{
+  border-color: purple;
+  box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+}
+button[name = "auth"]{
+  width: 84%;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 8px;
+  background-color: rgb(236, 226, 226);
+  border: 2px solid blueviolet;
+  color: blueviolet;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+button[name = "auth"]:hover{
+  background-color: blueviolet;
+  font-size: 17px;
+  color: white;
+}
+/*СТИЛЬ ДЛЯ НАДПИСИ ВСЕ ПРАВА ЗАЩИЩЕНЫ*/
+.under {
+    position: fixed; /* Фиксируем внизу экрана */
+    bottom: 20px;
+    right: 0.4%;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6); /* Полупрозрачный белый, чтобы не спорил с формой */
+    font-size: 15px;
+    font-family: sans-serif;
+    pointer-events: none; /* Чтобы сквозь текст можно было кликать, если там что-то есть */
+}
+
+/*СТИЛЬ ДЛЯ АНИМАЦИИ ПАДАЮЩИХ ПРЕДМЕТОВ*/
+canvas{
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:-1;
+}
+
+.buttongog{
+  display: flex;
+  justify-content: center;
+  gap:20px;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.networkbutton{
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.networkbutton:hover{
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+article p{
+   margin: 10px 0;
+   color: #666;
+   font-size: 16px;
+}
+.separator{
+  margin-left: 5%;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #555;
+}
+.separator a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.separator a:hover {
+ text-decoration: underline;
+ color: #2575fc;
+  }
+.separator1{
+  margin-left: 1%;
+  margin-top: 9px;
+  font-size: 14px;
+  color: #555;
+}
+.separator1 a{
+  text-decoration: none;
+  font-weight: bold;
+} 
+.separator1 a:hover {
+ text-decoration: underline;
+ color: #2575fc;
+}
+
+.separator2{
+   margin-left: 0.5%;
+  margin-top: 7px;
+  font-size: 14px;
+  color: #555;
+}
+.separator2 a{
+  text-decoration: none;
+  font-weight: bold;
+} 
+.separator2 a:hover {
+ text-decoration: underline;
+ color: #2575fc;
+}
+#bubbleButton{
+  position: relative;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #8a2be2, #6a1b9a);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden; /* Важно: обрезает рябь внутри кнопки */
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+  transition: transform 0.1s;
+  user-select: none;
+  z-index: 1;
+}
+#bubbleButton:hover{
+  font-size: 20px;
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (768px - 1024px)
+   ========================================== */
+@media (max-width: 1024px) {
+    .authform {
+        width: 450px;
+        padding: 35px;
+        margin-top: 10%;
+    }
+    
+    .authform input {
+        padding: 11px;
+        font-size: 15px;
+    }
+    
+    button[name="auth"] {
+        padding: 9px;
+        font-size: 14px;
+    }
+    
+    .under {
+        font-size: 13px;
+        bottom: 15px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    .authform {
+        width: 90%;
+        max-width: 380px;
+        padding: 30px 25px;
+        margin-top: 15%;
+    }
+    
+    .authform input {
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    button[name="auth"] {
+        padding: 8px;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+    
+    button[name="auth"]:hover {
+        font-size: 14px;
+    }
+    
+    .buttongog {
+        gap: 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .networkbutton {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .networkbutton img {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .networkbutton:hover {
+        transform: scale(1.05) rotate(3deg);
+    }
+    
+    article p {
+        font-size: 14px;
+    }
+    
+    .separator,
+    .separator1,
+    .separator2 {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+    
+    .under {
+        font-size: 11px;
+        bottom: 12px;
+        padding: 0 12px;
+    }
+    
+    #bubbleButton {
+        padding: 10px 28px;
+        font-size: 16px;
+    }
+    
+    #bubbleButton:hover {
+        font-size: 17px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (до 480px)
+   ========================================== */
+@media (max-width: 480px) {
+    .authform {
+        width: 95%;
+        padding: 25px 20px;
+        margin-top: 20%;
+        border-radius: 16px;
+    }
+    
+    .authform input {
+        padding: 8px 12px;
+        font-size: 14px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+    }
+    
+    button[name="auth"] {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    
+    .buttongog {
+        gap: 12px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .networkbutton {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .networkbutton img {
+        width: 22px;
+        height: 22px;
+    }
+    
+    article p {
+        font-size: 13px;
+    }
+    
+    .separator,
+    .separator1,
+    .separator2 {
+        font-size: 11px;
+        margin-top: 12px;
+    }
+    
+    .under {
+        font-size: 10px;
+        bottom: 10px;
+    }
+    
+    #bubbleButton {
+        padding: 8px 24px;
+        font-size: 14px;
+    }
+    
+    #bubbleButton:hover {
+        font-size: 15px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (до 360px)
+   ========================================== */
+@media (max-width: 360px) {
+    .authform {
+        padding: 20px 15px;
+        margin-top: 25%;
+    }
+    
+    .authform input {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    
+    .networkbutton {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .networkbutton img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .separator,
+    .separator1,
+    .separator2 {
+        font-size: 10px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ В АЛЬБОМНОЙ ОРИЕНТАЦИИ
+   ========================================== */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .authform {
+        margin-top: 5%;
+        padding: 30px;
+    }
+    
+    body {
+        min-height: 100vh;
+    }
+}
+
+/* ==========================================
+   УЛУЧШЕНИЯ ДЛЯ ТАЧ-УСТРОЙСТВ
+   ========================================== */
+@media (hover: none) and (pointer: coarse) {
+    .networkbutton:hover {
+        transform: none;
+    }
+    
+    .networkbutton:active {
+        transform: scale(0.95);
+    }
+    
+    button[name="auth"]:hover {
+        background-color: rgb(236, 226, 226);
+        font-size: 13px;
+        color: blueviolet;
+    }
+    
+    button[name="auth"]:active {
+        background-color: blueviolet;
+        color: white;
+    }
+    
+    #bubbleButton:hover {
+        font-size: 16px;
+    }
+    
+    #bubbleButton:active {
+        transform: scale(0.98);
+    }
+}
+
+
+/* ==========================================
+   АНИМАЦИЯ ДЛЯ ПОЯВЛЕНИЯ ФОРМЫ
+   ========================================== */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.authform {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+/* ==========================================
+   ПРЕДОТВРАЩЕНИЕ ЗУМА НА IOS
+   ========================================== */
+@media (max-width: 768px) {
+    input, 
+    select, 
+    textarea, 
+    button {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   УЛУЧШЕНИЕ ПРОКРУТКИ НА МОБИЛЬНЫХ
+   ========================================== */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+

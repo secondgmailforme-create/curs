@@ -1,0 +1,27 @@
+<!-- Модуль: Мои заявки эксперта (с вкладками) -->
+<div class="module-container">
+    <div class="dashboard-header">
+        <h1  style="color:rgb(223, 165, 250); font-size: 30px;font-family: cursive;" >Мои заявки</h1>
+    </div>
+
+    <!-- Вкладки -->
+    <div class="tabs-container">
+        <button class="tab-btn active" data-tab="new" onclick="switchTab('new')">
+            Ожидающие<span id="new-count" class="tab-badge">0</span>
+        </button>
+        <button class="tab-btn" data-tab="inprogress" onclick="switchTab('inprogress')">
+            В работе <span id="inprogress-count" class="tab-badge">0</span>
+        </button>
+        <button class="tab-btn" data-tab="completed" onclick="switchTab('completed')">
+            Завершенные <span id="completed-count" class="tab-badge">0</span>
+        </button>
+        <button onclick="loadCurrentTabTickets()" class="btn-refresh" title="Обновить список">
+            Обновить
+        </button>
+    </div>
+
+    <!-- Контейнер для заявок -->
+    <div id="tickets-container">
+        <div class="loading-spinner">Загрузка заявок...</div>
+    </div>
+</div>

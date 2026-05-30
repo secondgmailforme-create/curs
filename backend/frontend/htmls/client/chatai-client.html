@@ -1,0 +1,39 @@
+<!-- Модульная страница для чата AI клиента -->
+<div class="chat-page-container">
+    <div class="universal-chat-interface universal-ai-chat">
+        <!-- Область сообщений - сюда будут добавляться сообщения -->
+        <div class="universal-messages-area" id="chatMessages">
+            <div class="universal-empty-state">
+                <div class="universal-loading-spinner"></div>
+                <p>Загрузка...</p>
+            </div>
+        </div>
+
+
+        <div class="universal-input-zone">
+            <div style="flex: 1;">
+                <!-- Контейнер для предпросмотра файлов -->
+                <div class="universal-file-preview-container" id="filePreviewContainer" style="display: none;">
+                    <div class="universal-file-preview-list" id="filePreviewList"></div>
+                    <button class="universal-clear-files-btn" id="clearFilesBtn" title="Удалить файлы">❌</button>
+                </div>
+
+                <div class="universal-textarea-wrapper">
+                    <input type="file" id="fileInput" multiple accept="image/*,.pdf,.doc,.docx,.txt" style="display: none;">
+                    <textarea id="chatInput" rows="2" placeholder="Введите ваш вопрос..." data-i18n-placeholder="chatPlaceholder"></textarea>
+                </div>
+            </div>
+            <div class="universal-actions">
+                <button class="universal-btn universal-btn-secondary" id="attachBtn" title="Прикрепить файл" data-i18n="attachBtn">
+                    📎
+                </button>
+                <button class="universal-btn universal-btn-send" id="sendBtn" data-i18n="sendBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

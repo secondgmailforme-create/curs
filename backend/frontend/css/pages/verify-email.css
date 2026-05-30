@@ -1,0 +1,408 @@
+/* ==========================================
+   СТРАНИЦА ВЕРИФИКАЦИИ - 6 ОКОШЕЧКОВ КОДА
+   ========================================== */
+
+/* Стили для страницы верификации - 6 окошечек кода */
+.code-inputs {
+    display:flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.code-inputs .code-digit {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.code-inputs .code-digit:focus {
+    border-color: purple;
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+    transform: scale(1.05);
+}
+
+/* Индикатор проверки кода */
+.verification-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+.verification-indicator p {
+    margin-top: 10px;
+    color: blueviolet;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Крутящийся спиннер */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(138, 43, 226, 0.2);
+    border-top: 4px solid blueviolet;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Стили для ссылки повторной отправки */
+.resend-container {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.resend-container a {
+    color: blueviolet;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.resend-container a:hover {
+    text-decoration: underline;
+}
+
+/* Неактивная ссылка */
+.resend-container a.disabled {
+    color: #c1a3c2;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+/* Счетчик времени */
+.resend-timer {
+    color: #666;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (до 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    .code-inputs {
+        gap: 15px;
+    }
+    
+    .code-digit {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        border-radius: 10px;
+    }
+    
+    .spinner {
+        width: 35px;
+        height: 35px;
+        border-width: 3px;
+    }
+    
+    .verification-indicator p {
+        font-size: 14px;
+    }
+    
+    .resend-container {
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 600px)
+   ========================================== */
+@media (max-width: 600px) {
+    .code-inputs {
+        gap: 12px;
+    }
+    
+    .code-digit {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+    
+    .spinner {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .verification-indicator p {
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (до 480px)
+   ========================================== */
+@media (max-width: 480px) {
+    .code-inputs {
+        gap: 8px;
+        justify-content: center;
+    }
+    
+    .code-digit {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        border-radius: 8px;
+        border-width: 1.5px;
+    }
+    
+    .spinner {
+        width: 28px;
+        height: 28px;
+        border-width: 3px;
+    }
+    
+    .verification-indicator {
+        margin-top: 10px;
+        padding: 10px;
+    }
+    
+    .verification-indicator p {
+        font-size: 12px;
+    }
+    
+    .resend-container {
+        font-size: 12px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (до 360px)
+   ========================================== */
+@media (max-width: 360px) {
+    .code-inputs {
+        gap: 6px;
+    }
+    
+    .code-digit {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+}
+
+/* ==========================================
+   АЛЬТЕРНАТИВНОЕ РАСПОЛОЖЕНИЕ (СТОЛБИКОМ)
+   ========================================== */
+@media (max-width: 480px) and (orientation: portrait) {
+    /* На узких экранах можно сделать столбиком */
+    .code-inputs.vertical {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .code-inputs.vertical .code-digit {
+        width: 60px;
+        margin: 0 auto;
+    }
+}
+
+
+
+/* ==========================================
+   УЛУЧШЕНИЯ ДЛЯ ТАЧ-УСТРОЙСТВ
+   ========================================== */
+@media (hover: none) and (pointer: coarse) {
+    .code-digit:focus {
+        transform: scale(1.02);
+    }
+    
+    .resend-container a:active {
+        opacity: 0.7;
+    }
+    
+    .resend-container a:hover {
+        text-decoration: none;
+    }
+}
+
+/* ==========================================
+   ПОДДЕРЖКА REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    .code-digit {
+        transition: none;
+    }
+    
+    .code-digit:focus {
+        transform: none;
+    }
+    
+    .spinner {
+        animation: none;
+        border-top-color: blueviolet;
+        border-style: solid;
+    }
+    
+    .success-animation {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   СОСТОЯНИЕ ОШИБКИ
+   ========================================== */
+.code-digit.error {
+    border-color: #f44336;
+    background-color: #ffebee;
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ==========================================
+   СОСТОЯНИЕ УСПЕХА
+   ========================================== */
+.code-digit.success {
+    border-color: #4caf50;
+    background-color: #e8f5e9;
+}
+
+/* ==========================================
+   СООБЩЕНИЯ ОБ ОШИБКАХ
+   ========================================== */
+.error-message {
+    color: #f44336;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success-message {
+    color: #4caf50;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+/* ==========================================
+   ПРЕДОТВРАЩЕНИЕ ЗУМА НА IOS
+   ========================================== */
+@media (max-width: 600px) {
+    .code-digit {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   АВТОМАТИЧЕСКАЯ ФОКУСИРОВКА
+   ========================================== */
+.code-digit:first-child {
+    animation: focusPulse 1s ease-in-out 2;
+}
+
+@keyframes focusPulse {
+    0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4); }
+    70% { box-shadow: 0 0 0 5px rgba(138, 43, 226, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+}
+
+
+/* ==========================================
+   АЛЬТЕРНАТИВНЫЙ ВАРИАНТ С БОЛЬШИМИ ПОЛЯМИ
+   ========================================== */
+@media (max-width: 480px) {
+    .code-inputs.large-gap {
+        gap: 15px;
+    }
+    
+    .code-inputs.large-gap .code-digit {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+/* ==========================================
+   КНОПКА ОТПРАВКИ (если есть)
+   ========================================== */
+.verify-submit-btn {
+    background: linear-gradient(135deg, #8a2be2, #6a1b9a);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.verify-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.verify-submit-btn:active {
+    transform: translateY(0);
+}
+
+.verify-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .verify-submit-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .verify-submit-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        max-width: 160px;
+    }
+}
+

@@ -1,0 +1,59 @@
+<!-- Основной чат оператора -->
+<div class="universal-chat-interface">
+    <header class="universal-chat-header">
+        <div class="universal-chat-title">
+            <h1 style="color: rgb(139, 92, 246); font-size: 30px; font-family: cursive;">Чат с клиентом</h1>
+            <span class="universal-chat-status" id="operatorChatStatus">Выберите заявку для начала работы</span>
+        </div>
+        <button class="universal-btn universal-btn-secondary" id="openOperatorTicketSwitcherBtn" style="padding: 8px; border-radius: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="1"/>
+                <circle cx="19" cy="12" r="1"/>
+                <circle cx="5" cy="12" r="1"/>
+            </svg>
+        </button>
+    </header>
+
+    <div class="universal-messages-area" id="operatorChatMessages">
+        <div class="universal-empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <p style="margin-top: 15px;">Нет активного диалога</p>
+        </div>
+    </div>
+
+    <div class="universal-input-zone">
+        <div class="universal-textarea-wrapper">
+            <textarea id="operatorMessageInput" placeholder="Напишите сообщение..." rows="2" disabled></textarea>
+        </div>
+        <div class="universal-actions">
+            <button id="operatorToExpertBtn" class="universal-btn universal-btn-expert" disabled>👨‍🔬 Эксперту</button>
+            <button id="operatorCompleteBtn" class="universal-btn universal-btn-complete" disabled>✅ Завершить</button>
+            <button id="operatorSendBtn" class="universal-btn universal-btn-send" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно выбора заявки для оператора -->
+<div id="operatorTicketSwitcherModal" class="universal-modal-overlay" style="display: none;">
+    <div class="universal-modal-content">
+        <div class="universal-modal-header">
+            <h2>Выберите заявку</h2>
+            <button class="universal-modal-close" id="closeOperatorTicketSwitcherBtn">&times;</button>
+        </div>
+        <div class="universal-modal-body">
+            <div id="operatorTicketSwitcherList" class="universal-tickets-list">
+                <div class="universal-loading-state">
+                    <div class="universal-loading-spinner"></div>
+                    Загрузка заявок...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

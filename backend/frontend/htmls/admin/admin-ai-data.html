@@ -1,0 +1,132 @@
+<!-- AI данные -->
+<div class="admin-ai-page">
+    <div class="ai-header">
+        <h2>AI аналитика и данные</h2>
+        <div class="ai-header-actions">
+            <button class="btn btn-secondary" id="refreshAIData">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6"/>
+                    <path d="M1 20v-6h6"/>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+                    <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/>
+                </svg>
+                Обновить данные
+            </button>
+        </div>
+    </div>
+
+    <!-- Карточки прогнозов AI -->
+    <div class="ai-predictions-section">
+        <h3>AI прогноз на сегодня</h3>
+        <div class="predictions-grid" id="aiPredictionsGrid">
+            <div class="prediction-card">
+                <div class="prediction-icon">📊</div>
+                <div class="prediction-label">Прогноз нагрузки</div>
+                <div class="prediction-value" id="loadForecast">---</div>
+            </div>
+            <div class="prediction-card">
+                <div class="prediction-icon"></div>
+                <div class="prediction-label">Часы пик</div>
+                <div class="prediction-value" id="peakHours">---</div>
+            </div>
+            <div class="prediction-card full-width">
+                <div class="prediction-icon"></div>
+                <div class="prediction-label">Рекомендации AI</div>
+                <div class="prediction-recommendations" id="recommendations">
+                    Загрузка...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика дашборда -->
+    <div class="ai-stats-section">
+        <h3>📈 Статистика системы</h3>
+        <div class="stats-grid" id="dashboardStats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalTickets">-</div>
+                <div class="stat-label">Всего заявок</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgResolutionTime">-</div>
+                <div class="stat-label">Среднее время решения</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="openTickets">-</div>
+                <div class="stat-label">Открытых заявок</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="resolvedRate">-</div>
+                <div class="stat-label">Процент решённых</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Тренировочные данные AI -->
+    <div class="ai-training-section">
+        <div class="section-header">
+            <h3>🧠 Тренировочные данные AI</h3>
+            <div class="training-stats">
+                <span class="training-count" id="trainingCount">0 записей</span>
+                <button class="btn-sm btn-secondary" id="exportTrainingData">Экспорт</button>
+            </div>
+        </div>
+        <div class="training-table-container">
+            <table class="training-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Вопрос</th>
+                        <th>Категория</th>
+                        <th>Дата создания</th>
+                        <th>Использовано</th>
+                    </tr>
+                </thead>
+                <tbody id="trainingDataBody">
+                    <tr>
+                        <td colspan="5" class="loading-row">Загрузка данных...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="training-pagination" id="trainingPagination"></div>
+    </div>
+</div>
+
+<!-- Модальное окно деталей тренировочной записи -->
+<div id="trainingDetailModal" class="modal" style="display: none;">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h3>Детали тренировочной записи</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="training-detail-body">
+            <div class="detail-group">
+                <label>Вопрос:</label>
+                <p id="detailQuestion"></p>
+            </div>
+            <div class="detail-group">
+                <label>Ответ AI:</label>
+                <p id="detailAnswer"></p>
+            </div>
+            <div class="detail-group">
+                <label>Категория:</label>
+                <p id="detailCategory"></p>
+            </div>
+            <div class="detail-group">
+                <label>Модель:</label>
+                <p id="detailModel"></p>
+            </div>
+            <div class="detail-group">
+                <label>Время генерации:</label>
+                <p id="detailTime"></p>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-secondary modal-close">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast уведомления -->
+<div id="toastContainer" class="toast-container"></div>

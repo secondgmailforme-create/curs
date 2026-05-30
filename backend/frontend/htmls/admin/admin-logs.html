@@ -1,0 +1,169 @@
+<!-- admin-logs.html - Логи -->
+<div class="admin-logs-page">
+    <div class="logs-header">
+        <h2>Системные логи</h2>
+        <div class="logs-header-actions">
+            <button class="btn btn-secondary" id="refreshLogs">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6"/>
+                    <path d="M1 20v-6h6"/>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+                    <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/>
+                </svg>
+                Обновить
+            </button>
+            <button class="btn btn-primary" id="exportLogs">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Экспорт
+            </button>
+        </div>
+    </div>
+
+    <!-- Фильтры -->
+    <div class="logs-filters">
+        <div class="filter-group">
+            <label>Дата с</label>
+            <input type="datetime-local" id="filterStartDate">
+        </div>
+        <div class="filter-group">
+            <label>Дата по</label>
+            <input type="datetime-local" id="filterEndDate">
+        </div>
+        <div class="filter-group">
+            <label>Действие</label>
+            <select id="filterAction">
+                <option value="all">Все действия</option>
+                <option value="create_ticket">Создание заявки</option>
+                <option value="login">Вход в систему</option>
+                <option value="register">Регистрация</option>
+                <option value="ban_user">Блокировка пользователя</option>
+                <option value="restore_user">Восстановление пользователя</option>
+                <option value="assign_operator">Назначение оператора</option>
+                <option value="transfer_to_expert">Передача эксперту</option>
+                <option value="assign_expert">Назначение эксперта</option>
+                <option value="resolve_ticket">Решение заявки</option>
+                <option value="reopen_ticket">Переоткрытие заявки</option>
+                <option value="complete_ticket">Завершение админом</option>
+                <option value="escalate_ticket">⬆Эскалация админу</option>
+                <option value="change_password">Смена пароля</option>
+            </select>
+        </div>
+        <div class="filter-group search-group">
+            <label>Поиск</label>
+            <input type="text" id="searchLogs" placeholder="Поиск по действию, типу или ID...">
+        </div>
+        <div class="filter-group">
+            <label>&nbsp;</label>
+            <button class="btn btn-secondary" id="applyFilters">Применить</button>
+        </div>
+    </div>
+
+    <!-- Статистика логов -->
+    <div class="logs-stats">
+        <div class="stat-item">
+            <span class="stat-label">Всего записей:</span>
+            <span class="stat-value" id="totalLogsCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Создано заявок:</span>
+            <span class="stat-value" id="createCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Входов:</span>
+            <span class="stat-value" id="loginCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Блокировок:</span>
+            <span class="stat-value" id="banCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Назначений эксперта:</span>
+            <span class="stat-value" id="assignExpertCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Эскалаций:</span>
+            <span class="stat-value" id="escalateCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Завершений:</span>
+            <span class="stat-value" id="completeCount">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Смен пароля:</span>
+            <span class="stat-value" id="changePasswordCount">0</span>
+        </div>
+    </div>
+
+    <!-- Таблица логов -->
+    <div class="logs-table-container">
+        <table class="logs-table">
+            <thead>
+                <tr>
+                    <th style="width: 180px">Действие</th>
+                    <th style="width: 180px">Время</th>
+                    <th>Описание</th>
+                    <th style="width: 150px">Пользователь</th>
+                    <th style="width: 120px">Объект</th>
+                </tr>
+            </thead>
+            <tbody id="logsTableBody">
+                <tr>
+                    <td colspan="5" class="loading-row">Загрузка логов...<\/td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Пагинация -->
+    <div class="logs-pagination" id="logsPagination"></div>
+</div>
+
+<!-- Модальное окно деталей лога -->
+<div id="logDetailModal" class="modal" style="display: none;">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h3>Детали события</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="log-detail-body">
+            <div class="detail-row">
+                <div class="detail-label">Действие:</div>
+                <div class="detail-value" id="detailAction"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Время:</div>
+                <div class="detail-value" id="detailTime"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Пользователь:</div>
+                <div class="detail-value" id="detailUser"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Тип объекта:</div>
+                <div class="detail-value" id="detailEntityType"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">ID объекта:</div>
+                <div class="detail-value" id="detailEntityId"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Старые данные:</div>
+                <pre class="detail-data" id="detailOldData"></pre>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Новые данные:</div>
+                <pre class="detail-data" id="detailNewData"></pre>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-secondary modal-close">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast уведомления -->
+<div id="toastContainer" class="toast-container"></div>

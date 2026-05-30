@@ -1,0 +1,1258 @@
+/* ==========================================
+   КОНТЕЙНЕР НАСТРОЕК
+   ========================================== */
+.settings-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
+    animation: slideInRight 0.4s ease-out;
+}
+
+/* ==========================================
+   ШАПКА С ТАБАМИ
+   ========================================== */
+.settings-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tab-link {
+    text-decoration: none;
+    color: #6a1b9a;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 5px;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.tab-link:hover {
+    color: #8a2be2;
+}
+
+/* Активная вкладка */
+.tab-link.active {
+    color: #8a2be2;
+}
+
+/* Фиолетовая полоска под активной вкладкой */
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #8a2be2;
+    border-radius: 3px 3px 0 0;
+}
+
+/* ==========================================
+   КОНТЕНТ ВКЛАДОК
+   ========================================== */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ==========================================
+   ФОРМЫ И ПОЛЯ
+   ========================================== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a148c;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d1c4e9;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+}
+
+.btn-save {
+    background: #8a2be2;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-save:hover {
+    background: #6a1b9a;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   SWITCH/TOGGLE СТИЛИ
+   ========================================== */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #8a2be2;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.slider.round {
+    border-radius: 26px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* ==========================================
+   КОМПОНЕНТЫ НАСТРОЕК
+   ========================================== */
+.theme-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.toggle-group label.theme-text-label {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+/* ==========================================
+   КНОПКИ
+   ========================================== */
+.btn-secondary {
+    background: transparent;
+    color: #8a2be2;
+    border: 2px solid #8a2be2;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #8a2be2;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: transparent;
+    color: #ef5350;
+    border: 1px solid #ef5350;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-danger:hover {
+    background: #ef5350;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-cancel {
+    background: transparent;
+    color: #666;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #eee;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #8a2be2;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.btn-link:hover {
+    color: #6a1b9a;
+}
+
+/* ==========================================
+   СООБЩЕНИЯ
+   ========================================== */
+.message-box {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.message-box.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.message-box.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* ==========================================
+   МОДАЛЬНОЕ ОКНО
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.code-input {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 8px;
+    font-family: monospace;
+}
+
+.theme-text-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   АНИМАЦИИ
+   ========================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   ТЕМНАЯ ТЕМА
+   ========================================== */
+body.dark-theme .settings-container {
+    background: #1e293b;
+}
+
+body.dark-theme .tab-link {
+    color: #c4b5fd;
+}
+
+body.dark-theme .tab-link.active {
+    color: #a78bfa;
+}
+
+body.dark-theme .form-group label {
+    color: #c4b5fd;
+}
+
+body.dark-theme .form-group input {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-theme .form-group input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+body.dark-theme .btn-cancel {
+    color: #aaa;
+    border-color: #555;
+}
+
+body.dark-theme .btn-cancel:hover {
+    background: #333;
+}
+
+body.dark-theme .btn-link {
+    color: #c9a7ff;
+}
+
+body.dark-theme .btn-link:hover {
+    color: #a78bfa;
+}
+
+body.dark-theme .message-box.success {
+    background: #1b3320;
+    color: #81c784;
+    border-color: #2e7d32;
+}
+
+body.dark-theme .message-box.error {
+    background: #3d1b1b;
+    color: #ef5350;
+    border-color: #c62828;
+}
+
+body.dark-theme .modal-content {
+    background-color: #1e293b;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .close-modal {
+    color: #94a3b8;
+}
+
+body.dark-theme .close-modal:hover {
+    color: #cbd5e1;
+}
+
+body.dark-theme .code-input {
+    background: #0f172a;
+    color: #f1f5f9;
+    border-color: #334155;
+}
+
+body.dark-theme .theme-text-description {
+    color: #94a3b8;
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (до 900px)
+   ========================================== */
+@media (max-width: 900px) {
+    .settings-container {
+        max-width: 90%;
+        margin: 20px auto;
+        padding: 25px;
+    }
+    
+    .settings-tabs {
+        gap: 15px;
+    }
+    
+    .tab-link {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 600px)
+   ========================================== */
+@media (max-width: 600px) {
+    .settings-container {
+        margin: 15px auto;
+        padding: 20px;
+        border-radius: 16px;
+    }
+    
+    .settings-tabs {
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding-bottom: 5px;
+    }
+    
+    .tab-link {
+        font-size: 15px;
+        padding: 8px 12px;
+        flex-shrink: 0;
+    }
+    
+    .toggle-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .toggle-group label.theme-text-label {
+        width: 100%;
+    }
+    
+    .theme-switch-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .modal-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+    
+    .btn-cancel,
+    .btn-danger,
+    .btn-save,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        padding: 25px;
+        width: 95%;
+    }
+    
+    .code-input {
+        font-size: 20px;
+        letter-spacing: 4px;
+    }
+    
+    .form-group input {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .btn-save {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (до 400px)
+   ========================================== */
+@media (max-width: 400px) {
+    .settings-container {
+        padding: 15px;
+    }
+    
+    .tab-link {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+    }
+    
+    .form-group input {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    
+    .btn-save,
+    .btn-secondary,
+    .btn-danger,
+    .btn-cancel {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .code-input {
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+    
+    .theme-text-description {
+        font-size: 12px;
+    }
+}
+
+/* ==========================================
+   УЛУЧШЕНИЯ ДЛЯ ТАЧ-УСТРОЙСТВ
+   ========================================== */
+@media (hover: none) and (pointer: coarse) {
+    .btn-save:hover,
+    .btn-secondary:hover,
+    .btn-danger:hover,
+    .btn-cancel:hover {
+        transform: none;
+    }
+    
+    .btn-save:active {
+        transform: scale(0.98);
+    }
+    
+    .btn-secondary:active,
+    .btn-danger:active,
+    .btn-cancel:active {
+        transform: scale(0.98);
+    }
+    
+    .tab-link:active {
+        opacity: 0.7;
+    }
+}
+
+/* ==========================================
+   ПРЕДОТВРАЩЕНИЕ ЗУМА НА IOS
+   ========================================== */
+@media (max-width: 600px) {
+    input,
+    select,
+    textarea,
+    button,
+    .btn-save,
+    .btn-secondary,
+    .btn-danger,
+    .btn-cancel,
+    .btn-link {
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   ПОДДЕРЖКА REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    .settings-container,
+    .tab-content,
+    .modal-content {
+        animation: none;
+    }
+    
+    .btn-save,
+    .btn-secondary,
+    .btn-danger,
+    .btn-cancel {
+        transition: none;
+    }
+    
+    .btn-save:hover,
+    .btn-secondary:hover,
+    .btn-danger:hover,
+    .btn-cancel:hover {
+        transform: none;
+    }
+}
+
+/* ==========================================
+   ПЛАНШЕТЫ В АЛЬБОМНОЙ ОРИЕНТАЦИИ
+   ========================================== */
+@media (min-width: 601px) and (max-width: 900px) and (orientation: landscape) {
+    .settings-container {
+        max-width: 85%;
+        margin: 20px auto;
+    }
+    
+    .settings-tabs {
+        gap: 20px;
+    }
+}
+
+/* ==========================================
+   КНОПКИ В СОСТОЯНИИ ЗАГРУЗКИ
+   ========================================== */
+.btn-save.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-save.loading::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* ==========================================
+   УЛУЧШЕННАЯ ВАЛИДАЦИЯ
+   ========================================== */
+.form-group input.error {
+    border-color: #f44336;
+    background: #ffebee;
+}
+
+.form-group .error-message {
+    font-size: 12px;
+    color: #f44336;
+    margin-top: 5px;
+    display: block;
+}
+
+body.dark-theme .form-group input.error {
+    background: #3b0f0f;
+    border-color: #ef4444;
+}
+
+/* ==========================================
+   МОДАЛЬНОЕ ОКНО ЗАЯВКИ (TICKET MODAL)
+   ========================================== */
+
+/* Основной контейнер модалки заявки */
+#ticketModal.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Контент модалки заявки */
+#ticketModal .modal-content {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 28px;
+    width: 90%;
+    max-width: 750px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+/* Кастомный скроллбар */
+#ticketModal .modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#ticketModal .modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#ticketModal .modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+}
+
+#ticketModal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
+
+/* Заголовок модалки */
+#ticketModal .modal-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 20px 28px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 28px 28px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    letter-spacing: -0.3px;
+}
+
+/* Кнопка закрытия */
+#ticketModal .close {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 20;
+}
+
+#ticketModal .close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Карточка деталей заявки */
+#ticketModal .detail-card {
+    background: white;
+    margin: 24px 28px;
+    padding: 20px 24px;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#ticketModal .detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+#ticketModal .detail-card p {
+    margin: 12px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 0.95rem;
+}
+
+#ticketModal .detail-card strong {
+    color: #4a5568;
+    min-width: 85px;
+    font-weight: 600;
+}
+
+/* Секции (сообщения и история) */
+#ticketModal .messages-section,
+#ticketModal .history-section {
+    margin: 20px 28px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+#ticketModal .messages-section h3,
+#ticketModal .history-section h3 {
+    margin: 0;
+    padding: 16px 24px;
+    background: #f8f9fa;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2d3748;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#ticketModal .messages-section h3::before {
+    content: "💬";
+    font-size: 1.1rem;
+}
+
+#ticketModal .history-section h3::before {
+    content: "📋";
+    font-size: 1.1rem;
+}
+
+/* Список сообщений */
+#ticketModal .messages-list,
+#ticketModal .history-list {
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/* Сообщение */
+#ticketModal .message-item {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+#ticketModal .message-item:hover {
+    background: #faf5ff;
+}
+
+#ticketModal .message-sender {
+    font-size: 0.75rem;
+    color: #8b5cf6;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+#ticketModal .message-sender strong {
+    color: #6b46c1;
+}
+
+#ticketModal .message-text {
+    font-size: 0.9rem;
+    color: #1a202c;
+    line-height: 1.45;
+    margin: 8px 0;
+    background: #f7fafc;
+    padding: 10px 14px;
+    border-radius: 14px;
+    display: inline-block;
+    max-width: 90%;
+    word-wrap: break-word;
+    border: 1px solid #e2e8f0;
+}
+
+#ticketModal .message-time {
+    font-size: 0.65rem;
+    color: #a0aec0;
+    margin-top: 6px;
+}
+
+/* Элементы истории */
+#ticketModal .history-item {
+    padding: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s;
+}
+
+#ticketModal .history-item:hover {
+    background: #faf5ff;
+}
+
+#ticketModal .history-action {
+    font-weight: 600;
+    color: #7c3aed;
+    background: #ede9fe;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+}
+
+#ticketModal .history-status {
+    font-size: 0.85rem;
+    color: #4a5568;
+    flex: 1;
+}
+
+#ticketModal .history-status span {
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: 0.8rem;
+}
+
+#ticketModal .history-date {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+/* Секция кнопок */
+#ticketModal .chat-button-section {
+    padding: 20px 28px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 14px;
+    justify-content: flex-end;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-radius: 0 0 28px 28px;
+}
+
+/* Кнопки */
+#ticketModal .chat-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+#ticketModal .chat-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+#ticketModal .chat-btn.disabled,
+#ticketModal .chat-btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+#ticketModal .reopen-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #f97316;
+    color: white;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+#ticketModal .reopen-btn:hover {
+    background: #ea580c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Загрузчик */
+#ticketModal .loader {
+    text-align: center;
+    padding: 60px;
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+#ticketModal .loader::after {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-left: 12px;
+    border: 3px solid #e2e8f0;
+    border-top-color: #8b5cf6;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+}
+
+/* Ошибка */
+#ticketModal .error {
+    color: #dc2626;
+    background: #fef2f2;
+    padding: 20px;
+    margin: 24px;
+    border-radius: 16px;
+    text-align: center;
+    border-left: 4px solid #dc2626;
+    font-weight: 500;
+}
+
+/* Ссылка "еще сообщения" */
+#ticketModal .more-messages {
+    text-align: center;
+    padding: 12px;
+    color: #8b5cf6;
+    font-size: 0.8rem;
+    border-top: 1px solid #e2e8f0;
+    background: #faf5ff;
+    font-weight: 500;
+}
+
+/* Анимации для модалки */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   ТЕМНАЯ ТЕМА ДЛЯ МОДАЛКИ ЗАЯВКИ
+   ========================================== */
+body.dark-theme #ticketModal.modal {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+body.dark-theme #ticketModal .modal-content {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme #ticketModal .modal-content h2 {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+body.dark-theme #ticketModal .detail-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme #ticketModal .detail-card p {
+    color: #cbd5e1;
+}
+
+body.dark-theme #ticketModal .detail-card strong {
+    color: #a78bfa;
+}
+
+body.dark-theme #ticketModal .messages-section,
+body.dark-theme #ticketModal .history-section {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-theme #ticketModal .messages-section h3,
+body.dark-theme #ticketModal .history-section h3 {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+body.dark-theme #ticketModal .message-item {
+    border-color: #334155;
+}
+
+body.dark-theme #ticketModal .message-item:hover {
+    background: #2d3748;
+}
+
+body.dark-theme #ticketModal .message-sender strong {
+    color: #c4b5fd;
+}
+
+body.dark-theme #ticketModal .message-text {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+body.dark-theme #ticketModal .message-time {
+    color: #64748b;
+}
+
+body.dark-theme #ticketModal .history-item {
+    border-color: #334155;
+}
+
+body.dark-theme #ticketModal .history-item:hover {
+    background: #2d3748;
+}
+
+body.dark-theme #ticketModal .history-status {
+    color: #94a3b8;
+}
+
+body.dark-theme #ticketModal .history-status span {
+    background: #0f172a;
+    color: #cbd5e1;
+}
+
+body.dark-theme #ticketModal .history-date {
+    color: #64748b;
+}
+
+body.dark-theme #ticketModal .chat-button-section {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-theme #ticketModal .error {
+    background: #2d1b1b;
+    border-left-color: #ef4444;
+    color: #fca5a5;
+}
+
+body.dark-theme #ticketModal .more-messages {
+    background: #2d3748;
+    color: #a78bfa;
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ ДЛЯ МОДАЛКИ ЗАЯВКИ
+   ========================================== */
+@media (max-width: 640px) {
+    #ticketModal .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        border-radius: 20px;
+    }
+    
+    #ticketModal .modal-content h2 {
+        font-size: 1.2rem;
+        padding: 16px 20px;
+    }
+    
+    #ticketModal .detail-card,
+    #ticketModal .messages-section,
+    #ticketModal .history-section {
+        margin: 16px 20px;
+    }
+    
+    #ticketModal .detail-card {
+        padding: 16px;
+    }
+    
+    #ticketModal .detail-card p {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    #ticketModal .history-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #ticketModal .chat-button-section {
+        padding: 16px 20px;
+        flex-direction: column;
+    }
+    
+    #ticketModal .chat-btn,
+    #ticketModal .reopen-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #ticketModal .close {
+        top: 12px;
+        right: 14px;
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+    }
+    
+    #ticketModal .message-text {
+        max-width: 95%;
+        font-size: 0.85rem;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 641px) and (max-width: 900px) {
+    #ticketModal .modal-content {
+        max-width: 85%;
+    }
+}
